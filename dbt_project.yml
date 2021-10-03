@@ -1,0 +1,42 @@
+analysis-paths:
+- analysis
+clean-targets:
+- build
+- dbt_modules
+config-version: 2
+data-paths:
+- data
+docs-paths:
+- docs
+log-path: ../logs
+macro-paths:
+- macros
+models:
+  airbyte_utils:
+    +materialized: table
+    generated:
+      airbyte_ctes:
+        +materialized: ephemeral
+        +tags: airbyte_internal_cte
+      airbyte_tables:
+        +materialized: table
+        +tags: normalized_tables
+      airbyte_views:
+        +materialized: view
+        +tags: airbyte_internal_views
+modules-path: /tmp/dbt_modules
+name: airbyte_utils
+profile: normalize
+quoting:
+  database: true
+  identifier: true
+  schema: false
+source-paths:
+- models
+target-path: ../build
+test-paths:
+- tests
+vars:
+  dbt_utils_dispatch_list:
+  - airbyte_utils
+version: '1.0'
