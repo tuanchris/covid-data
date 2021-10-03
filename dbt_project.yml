@@ -24,7 +24,7 @@ models:
       airbyte_views:
         +materialized: view
         +tags: airbyte_internal_views
-modules-path: /tmp/dbt_modules
+modules-path: ../dbt_modules
 name: airbyte_utils
 profile: normalize
 quoting:
